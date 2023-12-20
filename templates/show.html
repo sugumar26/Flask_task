@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Data</title>
+</head>
+<body>
+    <h1>Employee Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.first_name }}</td>
+                    <td>{{ row.last_name }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.department }}</td>
+                    <td>{{ row.salary }}</td>
+                    <td>
+                        <a href="{{ url_for('edit', id=row.id) }}">Edit</a>
+                        |
+                        <a href="{{ url_for('delete', id=row.id) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br><br>
+    <a href="{{ url_for('addemployee') }}">
+        <button>Add Employee</button>
+    </a>
+</body>
+</html>
